@@ -14,28 +14,31 @@ export function Hero() {
         aria-hidden="true"
       />
 
-      <div className="absolute inset-0 bg-gradient-to-b from-bg/70 via-bg/40 to-bg/80" />
+      <div className="absolute top-1/4 -left-24 w-[500px] h-[500px] bg-accent/10 rounded-full blur-[150px] pointer-events-none" />
+      <div className="absolute bottom-1/3 -right-32 w-[450px] h-[450px] bg-accent/5 rounded-full blur-[150px] pointer-events-none" />
+
+      <div className="absolute inset-0 bg-gradient-to-b from-bg/70 via-bg/40 to-bg/90" />
 
       <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 text-center lg:text-left">
         <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-heading text-text leading-tight mb-6 animate-fade-in">
           {heading}
         </h1>
 
-        <p className="text-lg sm:text-xl text-text-muted max-w-2xl mx-auto lg:mx-0 mb-10 animate-fade-up">
+        <p className="text-lg sm:text-xl text-text/60 max-w-2xl mx-auto lg:mx-0 mb-10 animate-fade-up">
           {subtitle}
         </p>
 
         <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 animate-fade-up">
           <a
             href={ctaPrimary.href}
-            className="bg-accent text-bg px-8 py-4 rounded-full font-bold text-sm uppercase tracking-widest hover:bg-accent-hover transition-all duration-300 shadow-glow"
+            className="bg-accent text-bg px-8 py-4 rounded-full font-bold text-sm uppercase tracking-widest hover:bg-accent-hover transition-all duration-500 active:scale-95 shadow-glow"
           >
             {ctaPrimary.label}
           </a>
 
           <a
             href={ctaSecondary.href}
-            className="border border-border-subtle text-text px-8 py-4 rounded-full font-bold text-sm uppercase tracking-widest hover:border-accent hover:text-accent transition-all duration-300"
+            className="border border-border-subtle text-text px-8 py-4 rounded-full font-bold text-sm uppercase tracking-widest hover:border-accent hover:text-accent transition-all duration-500 active:scale-95"
           >
             {ctaSecondary.label}
           </a>
