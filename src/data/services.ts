@@ -50,17 +50,5 @@ export const servicesContent: ServicesContent = {
       image:
         'https://images.unsplash.com/photo-1470337458703-46ad1756a187?auto=format&fit=crop&w=1200&q=80',
     },
-    {
-      id: 'social',
-      title: 'Eventos Sociales Privados',
-      description: 'Celebraciones íntimas con un servicio cercano y de alta gama.',
-      features: [
-        'Menú personalizado por perfil de invitados',
-        'Montaje elegante y discreto',
-        'Atención dedicada durante todo el evento',
-      ],
-      image:
-        'https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=1200&q=80',
-    },
   ],
 }

@@ -16,9 +16,9 @@ export const Navbar = () => {
 
           <div className="hidden md:block">
             <div className="ml-10 flex items-baseline space-x-8">
-              <a href="#servicios" className="text-text-muted hover:text-accent transition-colors duration-300 text-sm font-medium">Servicios</a>
-              <a href="#experiencia" className="text-text-muted hover:text-accent transition-colors duration-300 text-sm font-medium">La Experiencia</a>
-              <a href="#galeria" className="text-text-muted hover:text-accent transition-colors duration-300 text-sm font-medium">Galería</a>
+              <a href="#servicios" className="text-text/70 hover:text-accent transition-colors duration-300 text-sm font-medium">Servicios</a>
+              <a href="#experiencia" className="text-text/70 hover:text-accent transition-colors duration-300 text-sm font-medium">La Experiencia</a>
+              <a href="#galeria" className="text-text/70 hover:text-accent transition-colors duration-300 text-sm font-medium">Galería</a>
             </div>
           </div>
 
@@ -34,7 +34,7 @@ export const Navbar = () => {
           <div className="md:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="inline-flex items-center justify-center p-2 rounded-md text-text-muted hover:text-accent active:scale-95 transition-all duration-500 focus:outline-none focus:ring-2 focus:ring-accent"
+              className="inline-flex items-center justify-center p-2 rounded-md text-text/70 hover:text-accent active:scale-95 transition-all duration-500 focus:outline-none focus:ring-2 focus:ring-accent"
               aria-expanded={isOpen}
             >
               <span className="sr-only">Abrir menú principal</span>
@@ -55,9 +55,9 @@ export const Navbar = () => {
       {isOpen && (
         <div className="md:hidden bg-surface border-b border-border-subtle animate-fade-in shadow-soft">
           <div className="px-4 pt-2 pb-6 space-y-2">
-            <a href="#servicios" className="block px-3 py-3 rounded-md text-base font-medium text-text-muted hover:text-accent hover:bg-elevated active:scale-[0.98] transition-all duration-300">Servicios</a>
-            <a href="#experiencia" className="block px-3 py-3 rounded-md text-base font-medium text-text-muted hover:text-accent hover:bg-elevated active:scale-[0.98] transition-all duration-300">La Experiencia</a>
-            <a href="#galeria" className="block px-3 py-3 rounded-md text-base font-medium text-text-muted hover:text-accent hover:bg-elevated active:scale-[0.98] transition-all duration-300">Galería</a>
+            <a href="#servicios" className="block px-3 py-3 rounded-md text-base font-medium text-text/70 hover:text-accent hover:bg-elevated active:scale-[0.98] transition-all duration-300">Servicios</a>
+            <a href="#experiencia" className="block px-3 py-3 rounded-md text-base font-medium text-text/70 hover:text-accent hover:bg-elevated active:scale-[0.98] transition-all duration-300">La Experiencia</a>
+            <a href="#galeria" className="block px-3 py-3 rounded-md text-base font-medium text-text/70 hover:text-accent hover:bg-elevated active:scale-[0.98] transition-all duration-300">Galería</a>
             <a
               href="#contacto"
               className="block w-full text-center mt-4 px-3 py-3 rounded-md text-base font-bold text-bg bg-accent hover:bg-accent-hover active:scale-[0.98] transition-all duration-500 shadow-glow"
