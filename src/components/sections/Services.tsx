@@ -1,8 +1,36 @@
+import { useRef } from 'react'
+import { motion, useInView } from 'framer-motion'
 import { Container } from '../ui'
 import { SectionTitle } from '../ui'
 import { servicesContent } from '../../data/services'
 
+const gridVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      delayChildren: 0.1,
+      staggerChildren: 0.12,
+    },
+  },
+}
+
+const cardVariants = {
+  hidden: { opacity: 0, scale: 0.9 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    transition: {
+      type: 'spring' as const,
+      damping: 20,
+    },
+  },
+}
+
 export function Services() {
+  const gridRef = useRef<HTMLDivElement | null>(null)
+  const isInView = useInView(gridRef, { once: true, margin: '-100px' })
+
   return (
     <section className="relative py-24 overflow-hidden bg-bg">
       <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[520px] h-[520px] bg-accent/5 blur-[120px] rounded-full pointer-events-none" />
@@ -15,11 +43,18 @@ export function Services() {
           </p>
         </div>
 
-        <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <motion.div
+          ref={gridRef}
+          className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          variants={gridVariants}
+          initial="hidden"
+          animate={isInView ? 'visible' : 'hidden'}
+        >
           {servicesContent.items.map((service) => (
-            <article
+            <motion.article
               key={service.id}
               className="group relative overflow-hidden rounded-2xl border border-border-subtle bg-gradient-to-b from-surface to-bg/40 p-6 transition-all duration-500 ease-out hover:-translate-y-2 hover:border-accent/40 hover:shadow-soft"
+              variants={cardVariants}
             >
               <div className="overflow-hidden rounded-xl border border-border-subtle/60">
                 <img
@@ -45,9 +80,9 @@ export function Services() {
                   </li>
                 ))}
               </ul>
-            </article>
+            </motion.article>
           ))}
-        </div>
+        </motion.div>
       </Container>
     </section>
   )
