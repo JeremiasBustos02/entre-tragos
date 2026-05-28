@@ -194,14 +194,12 @@ The final website should feel handcrafted, modern, elegant, emotional, and conve
 
 # IMPORTANT
 
-STRICT TECHNICAL STACK (MUST FOLLOW)
+## STYLING ARCHITECTURE (HYBRID APPROACH)
 
-We are strictly using Tailwind CSS for all styling.
+* Primary: Use Tailwind CSS utility classes for layout, spacing, typography, and colors directly in .tsx files.
 
-DO NOT create any .css, .module.css, or styling variables files.
+* Secondary: You CAN create specific standard .css files (e.g., Hero.css) ONLY for complex styling that Tailwind handles poorly. This includes: complex keyframe animations, advanced clip-path, intricate gradients, or heavy use of pseudo-elements (::before/::after).
 
-DO NOT suggest or implement CSS-in-JS (like styled-components).
+*  Rule: DO NOT use CSS Modules (.module.css). Import specific CSS files directly into the component (e.g., import './Hero.css';).
 
-Use Tailwind utility classes directly in the .tsx files.
-
-Use the custom tokens defined in tailwind.config.js (e.g., bg-bg, text-accent).
+*  Always use our Tailwind config tokens (like var(--color-bg)) inside those custom CSS files to maintain consistency.
