@@ -1,89 +1,35 @@
-import { useRef } from 'react'
-import { motion, useInView } from 'framer-motion'
-import { Container } from '../ui'
-import { SectionTitle } from '../ui'
 import { servicesContent } from '../../data/services'
 
-const gridVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      delayChildren: 0.1,
-      staggerChildren: 0.12,
-    },
-  },
-}
-
-const cardVariants = {
-  hidden: { opacity: 0, scale: 0.9 },
-  visible: {
-    opacity: 1,
-    scale: 1,
-    transition: {
-      type: 'spring' as const,
-      damping: 20,
-    },
-  },
-}
-
 export function Services() {
-  const gridRef = useRef<HTMLDivElement | null>(null)
-  const isInView = useInView(gridRef, { once: true, margin: '-100px' })
-
   return (
-    <section className="relative py-24 overflow-hidden bg-bg">
-      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[520px] h-[520px] bg-accent/5 blur-[120px] rounded-full pointer-events-none" />
+    <section className="bg-bg py-24">
+      <div className="max-w-7xl mx-auto px-6">
+        <p className="text-xs font-heading tracking-[0.3em] text-[#d4af37] uppercase">
+          {servicesContent.title}
+        </p>
 
-      <Container>
-        <div className="max-w-2xl">
-          <SectionTitle>{servicesContent.title}</SectionTitle>
-          <p className="mt-4 text-text/60">
-            Experiencias de barra diseñadas para elevar cada momento con estilo y precisión.
-          </p>
-        </div>
-
-        <motion.div
-          ref={gridRef}
-          className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-          variants={gridVariants}
-          initial="hidden"
-          animate={isInView ? 'visible' : 'hidden'}
-        >
-          {servicesContent.items.map((service) => (
-            <motion.article
+        <div className="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 border-t border-l border-white/10">
+          {servicesContent.items.map((service, index) => (
+            <article
               key={service.id}
-              className="group relative overflow-hidden rounded-2xl border border-border-subtle bg-gradient-to-b from-surface to-bg/40 p-6 transition-all duration-500 ease-out hover:-translate-y-2 hover:border-accent/40 hover:shadow-soft"
-              variants={cardVariants}
+              className="aspect-square flex flex-col justify-between p-10 border-r border-b border-white/10 bg-transparent hover:bg-white/[0.02] transition-colors duration-500 rounded-none relative overflow-hidden"
             >
-              <div className="overflow-hidden rounded-xl border border-border-subtle/60">
-                <img
-                  src={service.image}
-                  alt={service.title}
-                  className="h-48 w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                  loading="lazy"
-                />
+              <span className="text-xs font-mono text-[#d4af37]/60 tracking-widest">
+                {String(index + 1).padStart(2, '0')}
+              </span>
+
+              <div className="space-y-3">
+                <h3 className="text-2xl md:text-3xl font-heading text-white">
+                  {service.title}
+                </h3>
+                <p className="text-sm font-body text-white/60">
+                  {service.description}
+                </p>
               </div>
-
-              <h3 className="mt-6 text-xl font-heading text-text">
-                {service.title}
-              </h3>
-              <p className="mt-3 text-text/60">
-                {service.description}
-              </p>
-
-              <ul className="mt-4 space-y-2 text-sm text-text/60">
-                {service.features.map((feature) => (
-                  <li key={feature} className="flex items-start gap-2">
-                    <span className="mt-1 h-1.5 w-1.5 rounded-full bg-accent/60 shrink-0" />
-                    <span>{feature}</span>
-                  </li>
-                ))}
-              </ul>
-            </motion.article>
+            </article>
           ))}
-        </motion.div>
-      </Container>
+        </div>
+      </div>
     </section>
   )
 }
