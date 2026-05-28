@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion'
 import { Container } from '../ui'
 
 const EVENT_TYPES = ['Corporativo', 'Boda', 'Cumpleaños', 'Otro'] as const
@@ -27,7 +28,13 @@ export function Contact() {
             </div>
           </div>
 
-          <div className="rounded-2xl border border-border-subtle bg-gradient-to-b from-surface to-bg/40 p-8 shadow-soft">
+          <motion.div
+            className="rounded-2xl border border-border-subtle bg-gradient-to-b from-surface to-bg/40 p-8 shadow-soft"
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ type: 'spring', damping: 25, stiffness: 120 }}
+            viewport={{ once: true, amount: 0.3 }}
+          >
             <form className="space-y-5">
               <div>
                 <label htmlFor="nombre" className="text-text/60 font-medium mb-1.5 block text-sm">
@@ -69,7 +76,7 @@ export function Contact() {
                 Cotizar mi Evento
               </button>
             </form>
-          </div>
+          </motion.div>
         </div>
       </Container>
     </section>
