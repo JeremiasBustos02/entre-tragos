@@ -1,114 +1,30 @@
-/* Fonts are loaded via index.html or self-hosted later; no @import here. */
-@import "./variables.css";
-@import "./animations.css";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    color-scheme: dark;
+  }
 
-html {
-  color-scheme: dark;
-  scroll-behavior: smooth;
-}
+  body {
+    @apply bg-bg text-text font-body antialiased;
+    overflow-x: clip;
+  }
 
-body {
-  margin: 0;
-  min-height: 100svh;
-  background: var(--color-bg);
-  color: var(--color-text);
-  font-family: var(--font-body);
-  font-size: var(--text-body);
-  line-height: var(--lh-body);
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  overflow-x: clip;
-  scrollbar-width: thin;
-  scrollbar-color: var(--color-border-subtle) transparent;
-}
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading font-medium;
+  }
 
-img,
-picture,
-video,
-canvas,
-svg {
-  display: block;
-  max-width: 100%;
-}
-
-button,
-input,
-textarea,
-select {
-  font: inherit;
-  color: inherit;
-  letter-spacing: inherit;
-}
-
-h1,
-h2,
-h3,
-h4 {
-  margin: 0;
-  font-family: var(--font-heading);
-  font-weight: 500;
-  line-height: var(--lh-heading);
-  color: var(--color-text);
-}
-
-h1 {
-  font-size: var(--text-h1);
-}
-
-h2 {
-  font-size: var(--text-h2);
-}
-
-h3 {
-  font-size: var(--text-h3);
-}
-
-h4 {
-  font-size: var(--text-h4);
-}
-
-p {
-  margin: 0;
-}
-
-small {
-  font-size: var(--text-small);
-}
-
-:focus-visible {
-  outline: 2px solid var(--color-focus-ring);
-  outline-offset: 3px;
-}
-
-::selection {
-  background: rgba(209, 165, 107, 0.25);
-  color: var(--color-text);
-}
-
-*::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
-}
-
-*::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-*::-webkit-scrollbar-thumb {
-  background-color: var(--color-border-subtle);
-  border-radius: 999px;
-  border: 3px solid transparent;
-  background-clip: content-box;
-}
-
-#root {
-  min-height: 100svh;
-  display: flex;
-  flex-direction: column;
+  /* Scrollbar elegante */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-border-subtle rounded-full;
+  }
 }
