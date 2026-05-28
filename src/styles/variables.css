@@ -1,0 +1,69 @@
+/* Tokens represent global design decisions, not component styles. */
+:root {
+  --font-heading: "Fraunces", "Cormorant Garamond", serif;
+  --font-body: "Manrope", "Source Sans 3", sans-serif;
+
+  --text-h1: clamp(2.75rem, 6vw, 4.75rem);
+  --text-h2: clamp(2rem, 4.5vw, 3.25rem);
+  --text-h3: clamp(1.5rem, 3vw, 2.25rem);
+  --text-h4: clamp(1.25rem, 2.4vw, 1.75rem);
+  --text-body: clamp(1rem, 1.1vw, 1.125rem);
+  --text-small: clamp(0.875rem, 0.9vw, 0.95rem);
+
+  --lh-heading: 1.15;
+  --lh-body: 1.6;
+
+  --color-bg: #0b0a0d;
+  --color-surface: #131116;
+  --color-elevated: #1b1820;
+  --color-text: #f6f1ea;
+  --color-text-muted: #c4bcb1;
+  --color-accent: #d1a56b;
+  --color-accent-hover: #e1b77d;
+  --color-border-subtle: rgba(246, 241, 234, 0.12);
+  --color-focus-ring: rgba(209, 165, 107, 0.65);
+  --color-disabled: rgba(246, 241, 234, 0.45);
+
+  --overlay-soft: 0.2;
+  --overlay-medium: 0.45;
+  --overlay-strong: 0.65;
+
+  --space-xs: clamp(0.5rem, 1vw, 0.75rem);
+  --space-sm: clamp(0.75rem, 1.5vw, 1rem);
+  --space-md: clamp(1rem, 2vw, 1.5rem);
+  --space-lg: clamp(1.5rem, 3vw, 2.5rem);
+
+  --section-pad: clamp(3.5rem, 8vw, 7rem);
+  --section-pad-tight: clamp(2.5rem, 6vw, 5rem);
+
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+
+  --shadow-sm: 0 8px 24px rgba(5, 4, 8, 0.32);
+  --shadow-md: 0 18px 48px rgba(5, 4, 8, 0.4);
+
+  --container-max: 72rem;
+  --container-narrow: 58rem;
+  --container-pad: clamp(1.25rem, 4vw, 2.5rem);
+
+  --blur-sm: 6px;
+  --blur-md: 12px;
+  --blur-lg: 24px;
+
+  --duration-xs: 120ms;
+  --duration-sm: 180ms;
+  --duration-md: 280ms;
+
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+
+  --opacity-disabled: 0.6;
+
+  --z-base: 0;
+  --z-header: 10;
+  --z-overlay: 40;
+  --z-modal: 60;
+  --z-toast: 80;
+}
