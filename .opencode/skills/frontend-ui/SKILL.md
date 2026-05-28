@@ -77,3 +77,19 @@ Use motion/react responsibly.
 * Maintain sufficient contrast.
 * Ensure interactive elements are accessible.
 * Use semantic HTML whenever possible.
+
+---
+
+# IMPORTANT
+
+STRICT TECHNICAL STACK (MUST FOLLOW)
+
+We are strictly using Tailwind CSS for all styling.
+
+DO NOT create any .css, .module.css, or styling variables files.
+
+DO NOT suggest or implement CSS-in-JS (like styled-components).
+
+Use Tailwind utility classes directly in the .tsx files.
+
+Use the custom tokens defined in tailwind.config.js (e.g., bg-bg, text-accent).
