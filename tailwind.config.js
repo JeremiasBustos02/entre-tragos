@@ -23,9 +23,8 @@ export default {
         }
       },
       fontFamily: {
-        // Asegurate de importar estas fuentes en tu index.html o globals.css
-        heading: ['Fraunces', 'Cormorant Garamond', 'serif'],
-        body: ['Manrope', 'Source Sans 3', 'sans-serif'],
+        heading: ['Outfit', 'sans-serif'],
+        body: ['Plus Jakarta Sans', 'sans-serif'],
       },
       boxShadow: {
         'soft': '0 8px 24px rgba(5, 4, 8, 0.32)',

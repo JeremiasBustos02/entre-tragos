@@ -20,7 +20,7 @@ export function Hero() {
       <div className="absolute inset-0 bg-gradient-to-b from-bg/70 via-bg/40 to-bg/90" />
 
       <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 text-center lg:text-left">
-        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-heading text-text leading-tight mb-6 animate-fade-in">
+        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-heading text-text leading-tight tracking-tight mb-6 animate-fade-in">
           {heading}
         </h1>
 
