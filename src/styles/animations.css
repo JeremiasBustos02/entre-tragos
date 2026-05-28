@@ -1,0 +1,71 @@
+/* Global helper animations only. Complex sequences belong in motion/react. */
+/* Use shimmer only for rare highlights; avoid loops. */
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes soft-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in var(--duration-md) var(--ease-out) both;
+}
+
+.animate-fade-up {
+  animation: fade-up var(--duration-md) var(--ease-out) both;
+}
+
+.animate-float {
+  animation: soft-float 7s var(--ease-in-out) infinite;
+}
+
+.animate-shimmer {
+  background-size: 200% 100%;
+  animation: shimmer 2.6s var(--ease-in-out) 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .animate-fade-in,
+  .animate-fade-up,
+  .animate-float,
+  .animate-shimmer {
+    animation: none !important;
+  }
+}
