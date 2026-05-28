@@ -1,8 +1,9 @@
 import { motion } from 'framer-motion'
 import { heroContent } from '../../data/hero'
+import { useEffect, useRef } from 'react'
 
-const HERO_IMAGE =
-  'https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=1920&q=80'
+const HERO_VIDEO =
+  'https://cdn.coverr.co/videos/coverr-pouring-a-cocktail-5173/1080p.mp4'
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -24,77 +25,117 @@ const itemVariants = {
   },
 }
 
-const glowPulse = {
-  animate: {
-    opacity: [0.5, 1, 0.6],
-    transition: {
-      duration: 6,
-      repeat: Infinity,
-      repeatType: 'mirror' as const,
-      ease: 'easeInOut' as const,
-    },
-  },
-}
-
 export function Hero() {
-  const { heading, subtitle, ctaPrimary, ctaSecondary } = heroContent
+  const { heading, subtitle } = heroContent
+  const videoRef = useRef<HTMLVideoElement>(null)
+
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.defaultMuted = true;
+      videoRef.current.muted = true;
+      videoRef.current.play().catch(error => {
+        console.log("El autoplay fue bloqueado o el video está cargando: ", error);
+      });
+    }
+  }, [])
 
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden bg-bg">
-      <div
-        className="absolute inset-0 bg-cover bg-center"
-        style={{ backgroundImage: `url(${HERO_IMAGE})` }}
+    <section className="relative min-h-screen overflow-hidden bg-bg">
+      <video
+        ref={videoRef}
+        className="absolute inset-0 w-full h-full object-cover"
+        autoPlay
+        loop
+        muted
+        playsInline
+        src={HERO_VIDEO}
         aria-hidden="true"
       />
 
-      <motion.div
-        className="absolute top-1/4 -left-24 w-[500px] h-[500px] bg-accent/10 rounded-full blur-[150px] pointer-events-none"
-        {...glowPulse}
-      />
-      <motion.div
-        className="absolute bottom-1/3 -right-32 w-[450px] h-[450px] bg-accent/5 rounded-full blur-[150px] pointer-events-none"
-        {...glowPulse}
-      />
-
-      <div className="absolute inset-0 bg-gradient-to-b from-bg/70 via-bg/40 to-bg/90" />
+      <div className="absolute inset-0 bg-black/70" />
 
       <motion.div
-        className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 text-center lg:text-left"
+        className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center min-h-screen pt-24 px-6 max-w-7xl mx-auto"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
       >
-        <motion.h1
-          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-heading text-text leading-tight tracking-tight mb-6"
-          variants={itemVariants}
-        >
-          {heading}
-        </motion.h1>
+        <div>
+          <motion.h1
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-heading text-white leading-tight tracking-tight"
+            variants={itemVariants}
+          >
+            {heading}
+          </motion.h1>
 
-        <motion.p
-          className="text-lg sm:text-xl text-text/60 max-w-2xl mx-auto lg:mx-0 mb-10"
-          variants={itemVariants}
-        >
-          {subtitle}
-        </motion.p>
+          <motion.p
+            className="mt-6 text-lg sm:text-xl font-body text-white/70 max-w-xl"
+            variants={itemVariants}
+          >
+            {subtitle}
+          </motion.p>
+
+          <motion.div className="mt-10" variants={itemVariants}>
+            <a
+              href="#services"
+              className="border border-[#d4af37] text-[#d4af37] bg-transparent hover:bg-[#d4af37] hover:text-black transition-all duration-300 rounded-none px-8 py-3 uppercase tracking-widest text-xs font-semibold inline-block"
+            >
+              Ver Nuestras Propuestas
+            </a>
+          </motion.div>
+        </div>
 
         <motion.div
-          className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4"
+          className="bg-black/40 backdrop-blur-md border border-white/10 rounded-none p-8"
           variants={itemVariants}
         >
-          <a
-            href={ctaPrimary.href}
-            className="bg-accent text-bg px-8 py-4 rounded-full font-bold text-sm uppercase tracking-widest hover:bg-accent-hover transition-all duration-500 active:scale-95 shadow-glow"
-          >
-            {ctaPrimary.label}
-          </a>
+          <form className="space-y-6">
+            <div>
+              <label htmlFor="hero-nombre" className="block text-xs uppercase tracking-widest text-white/70 mb-2">
+                Nombre Completo
+              </label>
+              <input
+                id="hero-nombre"
+                type="text"
+                className="w-full border-white/10 focus:border-[#d4af37] text-white bg-transparent rounded-none px-0 py-2 border-b border-t-0 border-l-0 border-r-0 outline-none"
+                placeholder="Tu nombre"
+                required
+              />
+            </div>
 
-          <a
-            href={ctaSecondary.href}
-            className="border border-border-subtle text-text px-8 py-4 rounded-full font-bold text-sm uppercase tracking-widest hover:border-accent hover:text-accent transition-all duration-500 active:scale-95"
-          >
-            {ctaSecondary.label}
-          </a>
+            <div>
+              <label htmlFor="hero-email" className="block text-xs uppercase tracking-widest text-white/70 mb-2">
+                Email
+              </label>
+              <input
+                id="hero-email"
+                type="email"
+                className="w-full border-white/10 focus:border-[#d4af37] text-white bg-transparent rounded-none px-0 py-2 border-b border-t-0 border-l-0 border-r-0 outline-none"
+                placeholder="tu@email.com"
+                required
+              />
+            </div>
+
+            <div>
+              <label htmlFor="hero-evento" className="block text-xs uppercase tracking-widest text-white/70 mb-2">
+                Tipo de Evento
+              </label>
+              <input
+                id="hero-evento"
+                type="text"
+                className="w-full border-white/10 focus:border-[#d4af37] text-white bg-transparent rounded-none px-0 py-2 border-b border-t-0 border-l-0 border-r-0 outline-none"
+                placeholder="Corporativo, boda, cumpleaños..."
+                required
+              />
+            </div>
+
+            <button
+              type="submit"
+              className="bg-[#d4af37] text-black uppercase tracking-widest text-xs font-bold py-3 w-full"
+            >
+              Enviar Solicitud
+            </button>
+          </form>
         </motion.div>
       </motion.div>
     </section>
